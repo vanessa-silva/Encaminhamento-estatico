@@ -1,6 +1,6 @@
-##Trabalho 1 - Encaminhamento estático
+#Trabalho 1 - Encaminhamento estático
 
-#Objectivo
+##Objectivo
 Implementar a seguinte rede:
 
 <figure>
