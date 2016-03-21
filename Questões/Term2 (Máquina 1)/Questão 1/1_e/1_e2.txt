@@ -1,0 +1,15 @@
+Ccomandos Cisco:
+
+router_g04>enable
+router_g04#config
+Configuring from terminal, memory, or network [terminal]? 
+Enter configuration commands, one per line.  End with CNTL/Z.
+router_g04(config)#ip route 170.2.0.0 255.255.0.0 195.70.40.25
+router_g04(config)#end
+
+
+Terminal:
+
+[root@localhost ~]# traceroute -n -N 1 170.2.0.33
+traceroute to 170.2.0.33 (170.2.0.33), 30 hops max, 60 byte packets
+ 1  192.180.40.44  3004.624 ms !H  3005.273 ms !H  3005.300 ms !H

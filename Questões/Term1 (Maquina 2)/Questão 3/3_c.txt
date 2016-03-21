@@ -1,0 +1,4 @@
+para calcular o comprimento de um pacote IP subtrai-se o seu tamanho
+total (cabeçalho + data), encontrado nos bytes 2 a 3 (idexado a 0),
+pelo comprimento do próprio cabeçalho encontrado no primeiro byte nos
+últimos 4 bits (mais à direita).

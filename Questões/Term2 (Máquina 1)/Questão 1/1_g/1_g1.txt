@@ -1,0 +1,9 @@
+[root@localhost ar]# traceroute -n -N 1 170.2.0.15
+traceroute to 170.2.0.15 (170.2.0.15), 30 hops max, 60 byte packets
+ 1  192.180.40.2  0.491 ms  0.376 ms  0.384 ms
+ 2  192.180.40.3  0.601 ms  3005.145 ms !H  3005.706 ms !H
+[root@localhost ar]# traceroute -n -N 1 170.2.0.15
+traceroute to 170.2.0.15 (170.2.0.15), 30 hops max, 60 byte packets
+ 1  192.180.40.3  0.100 ms  0.070 ms  0.069 ms
+ 2  192.180.40.3  3005.710 ms !H  3005.788 ms !H  3005.939 ms !H
+[root@localhost ar]#
