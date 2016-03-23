@@ -1,0 +1,89 @@
+\section{Conectividade}
+\paragraph{a}
+\begin{verbatim}
+root@localhost ar]# traceroute -n -N 1 192.180.30.3
+traceroute to 192.180.30.3 (192.180.30.3), 30 hops max, 60 byte packets
+ 1  192.180.30.3  0.458 ms  0.189 ms  0.187 ms
+[root@localhost ar]# traceroute -n -N 1 192.180.40.3
+traceroute to 192.180.40.3 (192.180.40.3), 30 hops max, 60 byte packets
+ 1  192.180.40.3  0.557 ms  0.071 ms  0.064 ms
+\end{verbatim}
+
+\paragraph{b}
+\begin{verbatim}
+[root@localhost ar]# traceroute -n -N 1 192.180.40.44                    
+traceroute to 192.180.40.44 (192.180.40.44), 30 hops max, 60 byte packets
+ 1  170.2.0.33  3005.124 ms !H  3005.860 ms !H  3005.921 ms !H           
+[root@localhost ar]# traceroute -n -N 1 192.180.30.44                    
+traceroute to 192.180.30.44 (192.180.30.44), 30 hops max, 60 byte packets
+ 1  170.2.0.3  0.331 ms  0.225 ms  0.233 ms                              
+ 2  * * *                                                                
+ 3  * * *                                                                
+ 4  * * *                                                                
+ 5  *                                                                    
+\end{verbatim}
+
+\paragraph{b i}
+\begin{verbatim}
+[root@localhost ar]# traceroute -n -N 1 192.180.40.44                     
+traceroute to 192.180.40.44 (192.180.40.44), 30 hops max, 60 byte packets 
+ 1  170.2.0.33  3005.124 ms !H  3005.860 ms !H  3005.921 ms !H            
+[root@localhost ar]# traceroute -n -N 1 192.180.30.44                     
+traceroute to 192.180.30.44 (192.180.30.44), 30 hops max, 60 byte packets 
+ 1  170.2.0.3  0.331 ms  0.225 ms  0.233 ms                               
+ 2  * * *                                                                 
+ 3  * * *                                                                 
+ 4  * * *                                                                 
+ 5  * * *                                                                 
+ 6  * * *                                                                 
+\end{verbatim}
+\paragraph{b ii}
+\begin{verbatim}
+Comandos Cisco:                                                          
+                                                                         
+router_g04>enable                                                        
+router_g04#config                                                        
+Configuring from terminal, memory, or network [terminal]?                
+Enter configuration commands, one per line.  End with CNTL/Z.            
+router_g04(config)#ip route 170.2.0.0 255.255.0.0 195.70.40.25           
+router_g04(config)#end                                                   
+                                                                         
+                                                                         
+Terminal:                                                                
+                                                                         
+[root@localhost ar]# traceroute -n -N 1 192.180.40.44                    
+traceroute to 192.180.40.44 (192.180.40.44), 30 hops max, 60 byte packets
+ 1  170.2.0.33  3004.524 ms !H  3005.865 ms !H  3005.837 ms !H           
+[root@localhost ar]# traceroute -n -N 1 192.180.30.44                    
+traceroute to 192.180.30.44 (192.180.30.44), 30 hops max, 60 byte packets
+ 1  * * *                                                                
+ 2  * * *                                                                
+ 3  * * *                                                                
+ 4  * * *                                                                
+ 5  * * *                                                                
+ 6  * * *                                                                
+ 7  * * *                                                                
+\end{verbatim}
+\paragraph{b iii}
+\begin{verbatim}
+Comandos Cisco:                                                          
+                                                                         
+router_g04>enable                                                        
+router_g04#config                                                        
+Configuring from terminal, memory, or network [terminal]?                
+Enter configuration commands, one per line.  End with CNTL/Z.            
+router_g04(config)#ip route 170.2.0.0 255.255.0.0 192.180.40.3           
+router_g04(config)#end                                                   
+                                                                         
+                                                                         
+Terminal:                                                                
+                                                                         
+[root@localhost ar]# traceroute -n -N 1 192.180.40.44                    
+traceroute to 192.180.40.44 (192.180.40.44), 30 hops max, 60 byte packets
+ 1  170.2.0.33  3005.787 ms !H  3005.895 ms !H  3005.845 ms !H           
+[root@localhost ar]# traceroute -n -N 1 192.180.30.44                    
+traceroute to 192.180.30.44 (192.180.30.44), 30 hops max, 60 byte packets
+ 1  170.2.0.3  0.115 ms  0.067 ms  0.067 ms                              
+ 2  192.180.30.44  0.406 ms  0.684 ms  0.303 ms                          
+[root@localhost ar]#                                                     
+\end{verbatim}
