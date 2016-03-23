@@ -1,4 +1,4 @@
-Ccomandos Cisco:
+Comandos Cisco:
 
 router_g04>enable
 router_g04#config

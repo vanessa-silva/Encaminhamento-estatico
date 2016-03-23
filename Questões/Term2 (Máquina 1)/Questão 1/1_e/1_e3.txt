@@ -4,10 +4,7 @@ router_g04>enable
 router_g04#config
 Configuring from terminal, memory, or network [terminal]? 
 Enter configuration commands, one per line.  End with CNTL/Z.
-router_g04(config)#ip route 170.2.0.0. 255.255.0.0 192.180.40.3
-                                     ^
-% Invalid input detected at '^' marker.
-
+router_g04(config)#ip route 170.2.0.0. 255.255.0.0
 router_g04(config)#ip route 170.2.0.0 255.255.0.0 192.180.40.3 
 router_g04(config)#end
 
