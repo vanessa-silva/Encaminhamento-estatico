@@ -13,4 +13,10 @@ Terminal:
 
 [root@localhost ~]# traceroute -n -N 1 170.2.0.33
 traceroute to 170.2.0.33 (170.2.0.33), 30 hops max, 60 byte packets
- 1  192.180.40.44  3004.425 ms !H  3005.289 ms !H  3005.266 ms !H
+ 1  192.180.40.3  0.307 ms  0.247 ms  0.065 ms                                                             
+ 2  * * *                                                                
+ 3  * * *                                                                
+ 4  * * *                                                                
+ 5  * * *                                                                
+ 6  * *
+

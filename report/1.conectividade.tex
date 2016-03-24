@@ -1,12 +1,19 @@
 \section{Conectividade}
 \paragraph{a}
 \begin{verbatim}
-[root@localhost ar]# traceroute -n -N 1 192.180.30.3
+root@localhost ar]# traceroute -n -N 1 192.180.30.3
 traceroute to 192.180.30.3 (192.180.30.3), 30 hops max, 60 byte packets
  1  192.180.30.3  0.458 ms  0.189 ms  0.187 ms
 [root@localhost ar]# traceroute -n -N 1 192.180.40.3
 traceroute to 192.180.40.3 (192.180.40.3), 30 hops max, 60 byte packets
  1  192.180.40.3  0.557 ms  0.071 ms  0.064 ms
+[root@localhost ar]# traceroute -n -N 1 170.2.0.3
+traceroute to 170.2.0.3 (170.2.0.3), 30 hops max, 60 byte packets
+ 1  192.180.40.2  0.462 ms 0.366 ms 0.382 ms
+ 2  * * *
+ 3  * * *
+ 4  * * *
+ 5  *
 \end{verbatim}
 
 \paragraph{b}
@@ -56,7 +63,7 @@ traceroute to 192.180.40.44 (192.180.40.44), 30 hops max, 60 byte packets
  1  170.2.0.33  3004.524 ms !H  3005.865 ms !H  3005.837 ms !H           
 [root@localhost ar]# traceroute -n -N 1 192.180.30.44                    
 traceroute to 192.180.30.44 (192.180.30.44), 30 hops max, 60 byte packets
- 1  * * *                                                                
+ 1  170.2.0.3  0.330 ms  0.071 ms  0.068 ms                                                             
  2  * * *                                                                
  3  * * *                                                                
  4  * * *                                                                
@@ -128,7 +135,12 @@ Com este tipo de encaminhamento os pacotes perdidos, muito provavelmente, não s
 \begin{verbatim}
 [root@localhost ~]# traceroute -n -N 1 170.2.0.33
 traceroute to 170.2.0.33 (170.2.0.33), 30 hops max, 60 byte packets
- 1  192.180.40.44  3003.559 ms !H  3005.295 ms !H  3005.259 ms !H                                                            
+ 1  192.180.40.3  0.093 ms  0.064 ms  0.063 ms                                                             
+ 2  * * *                                                                
+ 3  * * *                                                                
+ 4  * * *                                                                
+ 5  * * *                                                                
+ 6  * *
 \end{verbatim}
 \paragraph{e ii}
 \begin{verbatim}
@@ -146,7 +158,12 @@ Terminal:
 
 [root@localhost ~]# traceroute -n -N 1 170.2.0.33
 traceroute to 170.2.0.33 (170.2.0.33), 30 hops max, 60 byte packets
- 1  192.180.40.44  3004.624 ms !H  3005.273 ms !H  3005.300 ms !H                                                      
+ 1  192.180.40.3  0.294 ms  0.165 ms  0.072 ms                                                             
+ 2  * * *                                                                
+ 3  * * *                                                                
+ 4  * * *                                                                
+ 5  * * *                                                                
+ 6  * *
 \end{verbatim}
 \paragraph{e iii}
 \begin{verbatim}
@@ -156,6 +173,7 @@ router_g04>enable
 router_g04#config
 Configuring from terminal, memory, or network [terminal]? 
 Enter configuration commands, one per line.  End with CNTL/Z.
+router_g04(config)#ip route 170.2.0.0. 255.255.0.0
 router_g04(config)#ip route 170.2.0.0 255.255.0.0 192.180.40.3 
 router_g04(config)#end
 
@@ -164,11 +182,16 @@ Terminal:
 
 [root@localhost ~]# traceroute -n -N 1 170.2.0.33
 traceroute to 170.2.0.33 (170.2.0.33), 30 hops max, 60 byte packets
- 1  192.180.40.44  3004.425 ms !H  3005.289 ms !H  3005.266 ms !H                                                 
+ 1  192.180.40.3  0.307 ms  0.247 ms  0.065 ms  
+ 2  * * *                                                                
+ 3  * * *                                                                
+ 4  * * *                                                                
+ 5  * * *                                                                
+ 6  * *
 \end{verbatim}
 
 \paragraph{f}
-QUESTÃO "E" está ERRADA!!! (Term2 tem rota por defeito para RCis2 (192.180.40.2) logo há possibilidade de chegar a Term1!!!)
+Sim, seria útil ter encaminhamento dinâmico nos \emph{routes}, pois mais uma vez vemos que os pacotes, em \it{e i} e \it{e ii}, perdem-se, e em \it{e iii} chegam ao destino mas, neste caso a resposta é enviada para o \emph{router} \textsf{RCis1} que não existe fisicamente e por isso também se perdem. Com o encaminhamento dinâmico os \emph{routers} escolhiam sempre a melhor rota, como explicado na alínea \it{d}, de modo a que estes problemas se resolvessem.
 
 \paragraph{g}
 

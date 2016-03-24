@@ -4,3 +4,10 @@ traceroute to 192.180.30.3 (192.180.30.3), 30 hops max, 60 byte packets
 [root@localhost ar]# traceroute -n -N 1 192.180.40.3
 traceroute to 192.180.40.3 (192.180.40.3), 30 hops max, 60 byte packets
  1  192.180.40.3  0.557 ms  0.071 ms  0.064 ms
+[root@localhost ar]# traceroute -n -N 1 170.2.0.3
+traceroute to 170.2.0.3 (170.2.0.3), 30 hops max, 60 byte packets
+ 1  192.180.40.2  0.462 ms 0.366 ms 0.382 ms
+ 2  * * *
+ 3  * * *
+ 4  * * *
+ 5  *
