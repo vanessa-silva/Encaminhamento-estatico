@@ -43,7 +43,7 @@ ack 116, win 340, options [nop,nop,TS val 2479473 ecr 2297442], length 60
   11:01:07.882171 IP 192.180.30.44.22 > 170.2.0.33.41460: Flags [P.], seq 665:717, 
 ack 116, win 340, options [nop,nop,TS val 2479473 ecr 2297443], length 52
 \end{verbatim}
-\newpage
+
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.8\textwidth]{3_a_filtro.png}
@@ -57,7 +57,7 @@ ack 116, win 340, options [nop,nop,TS val 2479473 ecr 2297443], length 52
 \label{fig:tcpdump}
 \caption{Resultado do filtro de captura.}
 \end{figure}
-
+\newpage
 \paragraph{b)}
 Filtro de visualização pretendido:
 \begin{verbatim}
@@ -71,6 +71,6 @@ Na figura abaixo, podemos ver o resultado da captura, no \emph{wireshark}, usand
 \label{fig:wireshark}
 \caption{Resultado do filtro de visualização do \emph{wireshark}.}
 \end{figure}
-\newpage
+
 \paragraph{c)}
 Para calcular o comprimento de um pacote IP subtrai-se o seu tamanho total (cabeçalho + dados), encontrado nos bytes 2 a 3 (indexado a 0), pelo comprimento do próprio cabeçalho, encontrado no primeiro byte, nos últimos 4 bits (mais à direita).

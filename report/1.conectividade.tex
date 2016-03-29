@@ -91,11 +91,11 @@ traceroute to 192.180.30.44 (192.180.30.44), 30 hops max, 60 byte packets
 \end{verbatim}
 
 \paragraph{c)}
-Na alínea \it{b} pretendemos testar a conectividade entre as máquinas \textsf{Term1} e \textsf{Term2}.
-Em \it{b i} os pacotes chegam à máquina \textsf{Term2} pela interface enp1s6 (192.180.30.44) que envia os pacotes, como resposta, pela interface enp0s7 (192.180.40.44) para o \emph{router} \textsf{RCis2} (192.180.40.2), uma vez que é a sua rota por defeito, como \textsf{RCis2} não tem rota para a rede 170.2.0.0/16 os pacotes são perdidos.
-Em \it{b ii} os pacotes chegam a \textsf{Term2} pela interface enp1s6 (192.180.30.44) que envia os pacotes, como resposta, pela interface enp0s7 (192.180.40.44) para o \emph{router} \textsf{RCis2}, (rota por defeito), como este é configurado com uma rota para a rede 170.2.0.0/16 através de \textsf{RCis1}, que é um \emph{router} fisicamente inexistente, a resposta nunca chega a \textsf{Term1}.
-Em \it{b iii} o percurso dos pacotes é idêntico ao descrito para a alínea \it{b ii}, à exceção de que, neste caso, o \emph{router} \textsf{RCis2} é configurado com uma rota para a rede 170.2.0.0/16 através da máquina \textsf{RLin}. \textsf{RCis2} envia então os pacotes para \textsf{RLin} (192.180.40.3) que reenvia-os para a máquina de origem.
-Em todos os casos, \it{b i}, \it{b ii} e \it{b iii}, quando a máquina \textsf{Term1} envia os pacotes para a interface enp0s7, que tem o endereço IP 192.180.40.44, os pacotes não chegam ao destino. Isto acontece pois \textsf{Term1} tem uma rota para a rede 192.180.40.0/24 através de \textsf{RCis1}, que é um \emph{router} fisicamente inexistente.
+Na alínea \it{b)} pretendemos testar a conectividade entre as máquinas \textsf{Term1} e \textsf{Term2}.
+Em \it{b) i)} os pacotes chegam à máquina \textsf{Term2} pela interface enp1s6 (192.180.30.44) que envia os pacotes, como resposta, pela interface enp0s7 (192.180.40.44) para o \emph{router} \textsf{RCis2} (192.180.40.2), uma vez que é a sua rota por defeito, como \textsf{RCis2} não tem rota para a rede 170.2.0.0/16 os pacotes são perdidos.\\
+Em \it{b) ii)} os pacotes chegam a \textsf{Term2} pela interface enp1s6 (192.180.30.44) que envia os pacotes, como resposta, pela interface enp0s7 (192.180.40.44) para o \emph{router} \textsf{RCis2}, (rota por defeito), como este é configurado com uma rota para a rede 170.2.0.0/16 através de \textsf{RCis1}, que é um \emph{router} fisicamente inexistente, a resposta nunca chega a \textsf{Term1}.\\
+Em \it{b) iii)} o percurso dos pacotes é idêntico ao descrito para a alínea \it{b) ii)}, à exceção de que, neste caso, o \emph{router} \textsf{RCis2} é configurado com uma rota para a rede 170.2.0.0/16 através da máquina \textsf{RLin}. \textsf{RCis2} envia então os pacotes para \textsf{RLin} (192.180.40.3) que reenvia-os para a máquina de origem.\\
+Em todos os casos, \it{b) i)}, \it{b) ii)} e \it{b) iii)}, quando a máquina \textsf{Term1} envia os pacotes para a interface enp0s7, que tem o endereço IP 192.180.40.44, os pacotes não chegam ao destino. Isto acontece pois \textsf{Term1} tem uma rota para a rede 192.180.40.0/24 através de \textsf{RCis1}, que é um \emph{router} fisicamente inexistente.
 \newpage
 Rotas da máquina \textsf{Term1}:
 \begin{verbatim}
@@ -121,8 +121,8 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 \end{verbatim}
 
 \paragraph{d)}
-Como vimos, perante algumas condições estipuladas, os pacotes enviados da máquina \textsf{Term1} à \textsf{Term2} foram perdidos, ou não chegaram ao destino ou a resposta não chegou à origem.
-No encaminhamento dinâmico, tal como o nome indica, as rotas (caminhos) são calculados dinamicamente recorrendo a protocolos de encaminhamento dinâmico que se adaptam a possíveis alterações que acontecem na rede. Estes protocolos envolvem a troca de informação de controlo entre os nós (terminais e \emph{routers}) encaminhadores, são desenvolvidos para trocar para uma rota alternativa quando a rota primária se torna inoperável e para decidir qual é a melhor rota para o destino.
+Como vimos, perante algumas condições estipuladas, os pacotes enviados da máquina \textsf{Term1} à \textsf{Term2} foram perdidos, ou não chegaram ao destino ou a resposta não chegou à origem.\\
+No encaminhamento dinâmico, tal como o nome indica, as rotas (caminhos) são calculados dinamicamente recorrendo a protocolos de encaminhamento dinâmico que se adaptam a possíveis alterações que acontecem na rede. Estes protocolos envolvem a troca de informação de controlo entre os nós (terminais e \emph{routers}) encaminhadores, são desenvolvidos para trocar para uma rota alternativa quando a rota primária se torna inoperável e para decidir qual é a melhor rota para o destino.\\
 Com este tipo de encaminhamento os pacotes perdidos, muito provavelmente, não seria perdidos, uma vez que os protocolos de encaminhamento dinâmico atualizam automaticamente as tabelas de encaminhamento dos \emph{routers}, de modo a encontrarem a rota ideal para chegar ao destino.
 
 \paragraph{e)}
@@ -182,7 +182,7 @@ traceroute to 170.2.0.33 (170.2.0.33), 30 hops max, 60 byte packets
 \end{verbatim}
 
 \paragraph{f)}
-Sim, seria útil ter encaminhamento dinâmico nos \emph{routes}, pois mais uma vez vemos que os pacotes, em \it{e i} e \it{e ii}, perdem-se, e em \it{e iii} chegam ao destino mas, neste caso a resposta é enviada para o \emph{router} \textsf{RCis1} que não existe fisicamente e por isso também se perdem. Com o encaminhamento dinâmico os \emph{routers} escolhiam sempre a melhor rota, como explicado na alínea \it{d}, de modo a que estes problemas se resolvessem.
+Sim, seria útil ter encaminhamento dinâmico nos \emph{routes}, pois mais uma vez vemos que os pacotes, em \it{e) i)} e \it{e) ii)}, perdem-se, e em \it{e) iii)} chegam ao destino mas, neste caso a resposta é enviada para o \emph{router} \textsf{RCis1} que não existe fisicamente e por isso também se perdem. Com o encaminhamento dinâmico os \emph{routers} escolhiam sempre a melhor rota, como explicado na alínea \it{d)}, de modo a que estes problemas se resolvessem.
 
 \paragraph{g)}
 \subparagraph{i)}
@@ -205,4 +205,6 @@ traceroute to 170.2.0.15 (170.2.0.15), 30 hops max, 60 byte packets
 \end{figure}
 \newpage
 \subparagraph{ii)}
-(a fazer).
+No capture do \emph{wireshark}, da figura anterior, podemos verificar que o \emph{router} Cisco envia um ICMP \emph{redirect message} para a máquina \textsf{Term2}, de modo a comunicar-lhe que existe uma melhor rota. Com esta informação o \textsf{Term2} atualiza a sua rota para o IP comunicado (192.180.40.3) e na chamada seguinte do \it{traceroute}, envia já diretamente para \textsf{RLin} (192.180.40.3), em vez de passar por \textsf{RCis2}, rota "antiga" (192.180.40.2).\\
+O \emph{Internet Control Message Protocol}(ICMP) é usado, entre outras coisas, para os terminais e \emph{routers} trocarem informação sobre o seu funcionamento, controlo do fluxo de informação e para trocarem mensagens de controlo, bem como informação relativa à escolha de rotas até um determinado destino.\\
+Um \emph{router} pode detetar uma rota alternativa entre o emissor e o recetor e enviar uma mensagem ao emissor, usando o ICMP, para o informar que existe uma melhor rota (ICMP \emph{redirect message}).
